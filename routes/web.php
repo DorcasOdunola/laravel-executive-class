@@ -26,8 +26,16 @@ Route::get('/', function () {
 
 Route::get("/home", [UsersController::class, 'index']);
 
-Route::get("/todos", [TodosController::class, 'index']);
+Route::get("/todos", [TodosController::class, 'read']);
 
 Route::get("/addtodo", function (){
     return view ("todos.addtodo");
 });
+
+Route::post("/addtodo", [TodosController::class, 'create']);
+
+Route::get("/todos/edit/{id}", [TodosController::class, 'edit']);
+
+Route::post("/todos/edit/{id}", [TodosController::class, 'update']);
+
+Route::get("/todos/{id}", [TodosController::class, 'delete']);
